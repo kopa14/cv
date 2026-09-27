@@ -113,6 +113,7 @@
     const flip = storyDialog.querySelector('.flip');
     const inner = storyDialog.querySelector('.flip-inner');
     const front = storyDialog.querySelector('.flip-front');
+    const back = storyDialog.querySelector('.flip-back');
     const scroller = storyDialog.querySelector('.story-scroll');
     const timing = { duration: 750, easing: 'cubic-bezier(0.2, 0.75, 0.15, 1)', fill: 'forwards' };
     let busy = false;
@@ -128,6 +129,15 @@
     };
     const px = (r) => ({ left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` });
     const place = (r) => Object.assign(flip.style, px(r));
+
+    // iOS Safari doesn't reliably hide a flipped face (blurred badges bleed through mirrored),
+    // so each face is switched off at the halfway point, when the card is edge-on.
+    const shown = [{ visibility: 'visible' }, { visibility: 'visible', offset: 0.5 }, { visibility: 'hidden', offset: 0.5 }, { visibility: 'hidden' }];
+    const hidden = [{ visibility: 'hidden' }, { visibility: 'hidden', offset: 0.5 }, { visibility: 'visible', offset: 0.5 }, { visibility: 'visible' }];
+    const showFace = (showBack) => {
+      front.style.visibility = showBack ? 'hidden' : '';
+      back.style.visibility = showBack ? '' : 'hidden';
+    };
 
     function lockScroll(lock) {
       const gap = window.innerWidth - document.documentElement.clientWidth;
@@ -155,12 +165,13 @@
       if (!reduceMotion) {
         const move = flip.animate([px(from), px(to)], timing);
         const turn = inner.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(180deg)' }], timing);
+        const faces = [front.animate(shown, timing), back.animate(hidden, timing)];
         await Promise.all([move.finished, turn.finished]);
-        move.cancel();
-        turn.cancel();
+        [move, turn, ...faces].forEach((a) => a.cancel());
       }
       place(to);
       inner.style.transform = 'rotateY(180deg)';
+      showFace(true);
       busy = false;
     }
 
@@ -171,11 +182,12 @@
       if (!reduceMotion) {
         const move = flip.animate([px(rectOf(flip)), px(rectOf(storyCard))], timing);
         const turn = inner.animate([{ transform: 'rotateY(180deg)' }, { transform: 'rotateY(0deg)' }], timing);
+        const faces = [front.animate(hidden, timing), back.animate(shown, timing)];
         await Promise.all([move.finished, turn.finished]);
-        move.cancel();
-        turn.cancel();
+        [move, turn, ...faces].forEach((a) => a.cancel());
       }
       inner.style.transform = '';
+      showFace(false);
       storyCard.style.visibility = '';
       storyDialog.close();
       lockScroll(false);
