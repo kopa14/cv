@@ -5,8 +5,8 @@
    ========================================================= */
 (() => {
   const fr = {
-    'meta.title': 'Nicolas Brants — Business Developer Junior',
-    'meta.description': 'Nicolas Brants, business developer junior spécialisé en e-commerce et commerce international, basé à Liège (Belgique).',
+    'meta.title': 'Nicolas Brants — Business Developer Junior à Liège, Belgique',
+    'meta.description': 'Business developer junior basé à Liège, Belgique. Vente B2B, études de marché internationales et e-commerce, avec une expérience à l’AWEX et une mission export à Birmingham.',
 
     'nav.skip': 'Aller au contenu',
     'nav.label': 'Navigation principale',
