@@ -6,6 +6,30 @@
   const t = (key) => (window.i18n ? window.i18n.t(key) : key);
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Light / dark theme ---------- */
+  const root = document.documentElement;
+  const themeButtons = document.querySelectorAll('.theme-toggle');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  function showTheme(theme) {
+    root.dataset.theme = theme;
+    const other = theme === 'light' ? 'dark' : 'light';
+    if (themeMeta) themeMeta.content = theme === 'light' ? '#f6f8f9' : '#060b14';
+    themeButtons.forEach((btn) => {
+      // The button shows what you switch TO: a moon in light mode, a sun in dark mode.
+      btn.querySelector('use').setAttribute('href', other === 'light' ? '#i-sun' : '#i-moon');
+      btn.setAttribute('aria-label', t(other === 'light' ? 'theme.toLight' : 'theme.toDark'));
+      const label = btn.querySelector('.theme-label');
+      if (label) label.textContent = t(other === 'light' ? 'theme.light' : 'theme.dark');
+    });
+  }
+  themeButtons.forEach((btn) => btn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    showTheme(next);
+    try { localStorage.setItem('nb-theme', next); } catch (_) { /* ignore */ }
+  }));
+  document.addEventListener('langchange', () => showTheme(root.dataset.theme || 'dark'));
+  showTheme(root.dataset.theme || 'dark');
+
   /* ---------- Mobile menu ---------- */
   function setMenu(open) {
     nav.classList.toggle('is-open', open);
@@ -19,6 +43,7 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   window.matchMedia('(min-width: 1101px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
   document.addEventListener('langchange', () => setMenu(nav.classList.contains('is-open')));
+  setMenu(false);   // sets the button's label in the current language on load
 
   /* ---------- Active nav link (scrollspy) ---------- */
   const links = [...document.querySelectorAll('.nav-links a')];
@@ -60,12 +85,13 @@
   function animateCount(el) {
     const target = parseFloat(el.dataset.count);
     const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
     const duration = 1600;
     const start = performance.now();
     const tick = (now) => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
+      el.textContent = prefix + Math.round(target * eased) + suffix;
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -117,6 +143,13 @@
     const scroller = storyDialog.querySelector('.story-scroll');
     const timing = { duration: 750, easing: 'cubic-bezier(0.2, 0.75, 0.15, 1)', fill: 'forwards' };
     let busy = false;
+    let closeRequested = false;
+    let opening = false;
+    // Animations pause in background tabs; never wait on them longer than their own length.
+    const settle = (anims) => Promise.race([
+      Promise.all(anims.map((a) => a.finished)).catch(() => {}),
+      new Promise((resolve) => setTimeout(resolve, timing.duration + 400)),
+    ]);
 
     const rectOf = (el) => {
       const r = el.getBoundingClientRect();
@@ -148,6 +181,8 @@
     async function openStory() {
       if (busy || storyDialog.open) return;
       busy = true;
+      opening = true;
+      closeRequested = false;
       // The front face is a copy of the card exactly as it looks in the grid.
       front.className = 'flip-face flip-front project';
       front.replaceChildren(...storyCard.cloneNode(true).childNodes);
@@ -166,24 +201,27 @@
         const move = flip.animate([px(from), px(to)], timing);
         const turn = inner.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(180deg)' }], timing);
         const faces = [front.animate(shown, timing), back.animate(hidden, timing)];
-        await Promise.all([move.finished, turn.finished]);
+        await settle([move, turn]);
         [move, turn, ...faces].forEach((a) => a.cancel());
       }
       place(to);
       inner.style.transform = 'rotateY(180deg)';
       showFace(true);
       busy = false;
+      opening = false;
+      if (closeRequested) { closeRequested = false; closeStory(); }   // ✕ or Esc pressed mid-flip
     }
 
     async function closeStory() {
-      if (busy || !storyDialog.open) return;
+      if (!storyDialog.open) return;
+      if (busy) { if (opening) closeRequested = true; return; }   // remember a close asked for mid-flip
       busy = true;
       storyDialog.classList.remove('is-open');
       if (!reduceMotion) {
         const move = flip.animate([px(rectOf(flip)), px(rectOf(storyCard))], timing);
         const turn = inner.animate([{ transform: 'rotateY(180deg)' }, { transform: 'rotateY(0deg)' }], timing);
         const faces = [front.animate(hidden, timing), back.animate(shown, timing)];
-        await Promise.all([move.finished, turn.finished]);
+        await settle([move, turn]);
         [move, turn, ...faces].forEach((a) => a.cancel());
       }
       inner.style.transform = '';

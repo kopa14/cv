@@ -6,7 +6,7 @@
   <title>Nicolas Brants — Junior Business Developer in Liège, Belgium</title>
   <meta name="description" content="Junior business developer based in Liège, Belgium. B2B sales, international market research and e-commerce, with experience at AWEX and an export mission to Birmingham.">
   <link rel="canonical" href="https://nicolasbrants.com/">
-  <meta name="theme-color" content="#070915">
+  <meta name="theme-color" content="#060b14">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Nicolas Brants">
   <meta property="og:url" content="https://nicolasbrants.com/">
@@ -16,7 +16,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Nicolas Brants — Junior Business Developer">
-  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="fr_BE">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
@@ -27,7 +27,7 @@
     "url": "https://nicolasbrants.com/",
     "image": "https://nicolasbrants.com/assets/photo.webp",
     "jobTitle": "Junior Business Developer",
-    "description": "Junior business developer specialised in B2B sales, international business and e-commerce.",
+    "description": "Junior business developer specialized in B2B sales, international business and e-commerce.",
     "email": "mailto:nicolas.brants@icloud.com",
     "address": { "@type": "PostalAddress", "addressLocality": "Liège", "addressCountry": "BE" },
     "alumniOf": [
@@ -43,8 +43,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/styles.css?v=20261004c">
+  <script>
+    // Set the theme before the page paints: saved choice first, then the device setting.
+    (function () {
+      var root = document.documentElement, theme;
+      root.classList.add('js');
+      try { theme = localStorage.getItem('nb-theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      root.dataset.theme = theme;
+    })();
+  </script>
 </head>
 <body>
 
@@ -52,7 +63,7 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <g id="logo-nb">
-        <path d="M24 74V26L50 74V26M50 26H60A11.5 11.5 0 0 1 60 49H50M50 49H62A12.5 12.5 0 0 1 62 74H50" fill="none" stroke="#a598ff" stroke-width="7" stroke-linejoin="bevel"/>
+        <path d="M24 74V26L50 74V26M50 26H60A11.5 11.5 0 0 1 60 49H50M50 49H62A12.5 12.5 0 0 1 62 74H50" fill="none" stroke="#63c8d9" stroke-width="7" stroke-linejoin="bevel"/>
         <path d="M80 10Q81.2 18.8 90 20Q81.2 21.2 80 30Q78.8 21.2 70 20Q78.8 18.8 80 10Z" fill="#fff"/>
       </g>
     </defs>
@@ -80,6 +91,8 @@
     <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></symbol>
     <symbol id="i-package" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
     <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
@@ -105,6 +118,10 @@
           <li><a href="#resume" data-i18n="nav.resume">Resume</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
+        <button class="theme-toggle theme-toggle--menu" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>
+          <span class="theme-label"></span>
+        </button>
         <a class="btn btn-primary nav-cv-mobile" href="assets/Nicolas-Brants-CV.pdf" data-i18n-attr="href:cv.file" download>
           <span data-i18n="nav.cv">Download CV</span>
           <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
@@ -112,6 +129,9 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="theme-toggle theme-toggle--header" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
         <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.lang" aria-label="Language">
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="fr" aria-pressed="false">FR</button>
@@ -136,7 +156,7 @@
           <span class="hello-badge reveal"><span class="wave" aria-hidden="true">👋</span><span data-i18n="hero.hello">Hello, I'm</span></span>
           <h1 class="hero-name reveal" style="--d:1">Nicolas <span class="gradient-text">Brants</span></h1>
           <p class="hero-role reveal" style="--d:2" data-i18n="hero.role">Junior Business Developer</p>
-          <p class="hero-pitch reveal" style="--d:3" data-i18n="hero.pitch">Junior business developer with a bachelor's in E-Business, based in Liège. I help companies grow beyond their borders — through market research, e-commerce audits and the right platform partnerships. Let's grow your business together!</p>
+          <p class="hero-pitch reveal" style="--d:3" data-i18n="hero.pitch">E-Business graduate based in Liège. After a prospecting campaign and a week in the field in Birmingham, my team and I won an order of more than 10,000 units from a major hotel. I've also audited the digital maturity of Walloon SMEs, face to face with their managers.</p>
           <div class="hero-ctas reveal" style="--d:4">
             <a href="#contact" class="btn btn-primary">
               <span data-i18n="hero.hire">Hire Me</span>
@@ -152,7 +172,7 @@
             <a class="social" href="https://www.linkedin.com/in/nicolas-brants-32a465228/" target="_blank" rel="noopener" aria-label="LinkedIn">
               <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
             </a>
-            <a class="social" href="mailto:nicolas.brants@icloud.com" aria-label="Email">
+            <a class="social" href="mailto:nicolas.brants@icloud.com" data-i18n-attr="aria-label:aria.email" aria-label="Email">
               <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
             </a>
           </div>
@@ -175,7 +195,7 @@
           <div class="float-card float-card--right">
             <svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>
             <strong data-count="10" data-suffix="K+">10K+</strong>
-            <span data-i18n="stats.units">Units sold in one week</span>
+            <span data-i18n="stats.units">Units sold in a single order</span>
           </div>
           <div class="status-pill">
             <span class="pulse" aria-hidden="true"></span>
@@ -190,7 +210,7 @@
             <span class="stat-icon tint-purple"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg></span>
             <div>
               <strong class="stat-value" data-count="10" data-suffix="K+">10K+</strong>
-              <span class="stat-label" data-i18n="stats.units">Units sold in one week</span>
+              <span class="stat-label" data-i18n="stats.units">Units sold in a single order</span>
             </div>
           </div>
           <div class="stat">
@@ -201,17 +221,17 @@
             </div>
           </div>
           <div class="stat">
-            <span class="stat-icon tint-orange"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg></span>
+            <span class="stat-icon tint-orange"><svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg></span>
             <div>
-              <strong class="stat-value" data-count="2">2</strong>
-              <span class="stat-label" data-i18n="stats.missions">Professional missions</span>
+              <strong class="stat-value" data-count="10" data-prefix="~">~10</strong>
+              <span class="stat-label" data-i18n="stats.audits">Digital audits of Walloon SMEs</span>
             </div>
           </div>
           <div class="stat">
-            <span class="stat-icon tint-pink"><svg class="icon" aria-hidden="true"><use href="#i-graduation"/></svg></span>
+            <span class="stat-icon tint-pink"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
             <div>
-              <strong class="stat-value" data-count="3" data-suffix="+">3+</strong>
-              <span class="stat-label" data-i18n="stats.years">Years of E-Business studies</span>
+              <strong class="stat-value" data-count="5">5</strong>
+              <span class="stat-label" data-i18n="stats.service">Years of face-to-face customer contact</span>
             </div>
           </div>
         </div>
@@ -224,8 +244,8 @@
         <div class="about-text reveal">
           <span class="eyebrow" data-i18n="about.eyebrow">Who I am</span>
           <h2 class="section-title" id="about-title" data-i18n="about.title">About Me</h2>
-          <p data-i18n="about.p1">I'm a junior business developer with a <strong>bachelor's degree in E-Business</strong>, passionate about helping companies sell beyond their borders. During my internship at <strong>AWEX</strong> — the Wallonia Export &amp; Investment Agency — I audited Walloon companies on their international e-commerce development, researched foreign markets and connected businesses with e-commerce platforms.</p>
-          <p data-i18n="about.p2">Earlier, I was selected for a trade mission with <strong>Charlemagne Chocolatiers</strong> that took me all the way to a pitch at the Birmingham Chamber of Commerce. I'm curious, results-driven and at home in international settings — in French, English and Spanish.</p>
+          <p data-i18n="about.p1">I'm a junior business developer with a <strong>bachelor's degree in E-Business</strong>. During my internship at <strong>AWEX</strong> — the Wallonia Export &amp; Investment Agency — I audited the digital maturity of around ten Walloon SMEs in interviews with their managers, identified their weak points and recommended solutions, and connected companies with e-commerce platforms.</p>
+          <p data-i18n="about.p2">Earlier, on an export sales mission for <strong>Charlemagne Chocolatiers</strong>, I coordinated a team of students through several weeks of remote prospecting and a week in the field in Birmingham, which ended with a single order of more than 10,000 units from The Grand Hotel Birmingham. Alongside my studies, five years of front-of-house jobs taught me to deal with customers face to face — in French, English or Spanish.</p>
           <div class="about-actions">
             <a href="#contact" class="btn btn-outline">
               <span data-i18n="about.cta">Get in Touch</span>
@@ -253,7 +273,7 @@
           <li class="fact reveal" style="--d:4">
             <span class="fact-icon tint-orange"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span>
             <span class="fact-label" data-i18n="fact.mobility">Mobility</span>
-            <span class="fact-value" data-i18n="fact.mobility.value">Driving licence B · own car</span>
+            <span class="fact-value" data-i18n="fact.mobility.value">Driving license B · own car</span>
           </li>
         </ul>
       </div>
@@ -319,7 +339,7 @@
             </div>
 
             <div class="card reveal" style="--d:2">
-              <h3 class="card-title" data-i18n="skills.software">Software mastered</h3>
+              <h3 class="card-title" data-i18n="skills.software">Tools I use</h3>
               <ul class="chips">
                 <li class="chip" data-i18n="software.ai">AI tools</li>
                 <li class="chip">Odoo</li>
@@ -410,9 +430,9 @@
             </div>
             <div class="project-body">
               <h3><a class="project-link" href="https://www.wallonieeurope.be/event/eu-cross-border-e-commerce-forum-2025/" target="_blank" rel="noopener">EU Cross-Border E-Commerce Forum 2025</a></h3>
-              <p data-i18n="p1.desc">Co-organised the 2025 edition of this European forum dedicated to cross-border e-commerce, as part of my internship at AWEX.</p>
+              <p data-i18n="p1.desc">Co-organized the 2025 edition of this European forum dedicated to cross-border e-commerce, as part of my internship at AWEX.</p>
               <ul class="tags">
-                <li class="tag" data-i18n="tag.events">Event organisation</li>
+                <li class="tag" data-i18n="tag.events">Event organization</li>
                 <li class="tag">International</li>
                 <li class="tag">E-commerce</li>
               </ul>
@@ -425,14 +445,14 @@
 
           <article class="project project--link reveal" style="--d:1">
             <div class="project-art project-art--2">
-              <img class="project-img" src="assets/projects/cmm.webp" loading="lazy" alt="E-Commerce Maturity Tool (CMM)" decoding="async" onerror="this.remove()">
+              <img class="project-img" src="assets/projects/cmm.webp" loading="lazy" data-i18n-attr="alt:alt.cmm" alt="E-Commerce Maturity Tool (CMM)" decoding="async" onerror="this.remove()">
               <span class="project-badge">AWEX · 2025</span>
             </div>
             <div class="project-body">
               <h3><a class="project-link" href="https://export.walloniaexportinvestment.be/en/aids-services/e-commerce-support/" target="_blank" rel="noopener"><span data-i18n="p2.title">E-Commerce Maturity Tool (CMM)</span></a></h3>
-              <p data-i18n="p2.desc">Digitalised the CMM, a tool that analyses the e-commerce maturity of companies, to support the audits of Walloon businesses on their international development.</p>
+              <p data-i18n="p2.desc">Digitalized the CMM, a tool that analyzes the e-commerce maturity of companies, to support the audits of Walloon businesses on their international development.</p>
               <ul class="tags">
-                <li class="tag" data-i18n="tag.digital">Digitalisation</li>
+                <li class="tag" data-i18n="tag.digital">Digitalization</li>
                 <li class="tag" data-i18n="tag.analysis">Analysis</li>
                 <li class="tag">E-commerce</li>
               </ul>
@@ -445,13 +465,13 @@
 
           <article class="project project--link project--flip reveal" style="--d:2" id="card-charlemagne">
             <div class="project-art project-art--3">
-              <img class="project-img" src="assets/projects/charlemagne.webp" loading="lazy" alt="Charlemagne Chocolatiers trade mission to the UK" decoding="async" onerror="this.remove()">
+              <img class="project-img" src="assets/projects/charlemagne.webp" loading="lazy" data-i18n-attr="alt:alt.charlemagne" alt="Charlemagne Chocolatiers trade mission to the UK" decoding="async" onerror="this.remove()">
               <span class="project-badge" data-i18n="p3.badge">Oct 2022</span>
-              <span class="project-metric" data-i18n="p3.metric">10K+ units in 1 week</span>
+              <span class="project-metric" data-i18n="p3.metric">10K+ units in one order</span>
             </div>
             <div class="project-body">
               <h3><button class="project-link" type="button" aria-haspopup="dialog" aria-controls="story-charlemagne">Charlemagne Chocolatiers</button></h3>
-              <p data-i18n="p3.desc">Trade mission I was selected for by a jury of HEPL professors and AWEX agents: market studies on Wallonia and the UK, prospecting, and a pitch at the Birmingham Chamber of Commerce.</p>
+              <p data-i18n="p3.desc">Export sales mission with a team of students: several weeks of remote prospecting, a week in the field in Birmingham, a pitch at the Chamber of Commerce and a single order of 10,000+ units from The Grand Hotel Birmingham.</p>
               <ul class="tags">
                 <li class="tag" data-i18n="tag.research">Market research</li>
                 <li class="tag" data-i18n="tag.sales">Sales</li>
@@ -489,28 +509,37 @@
             </h3>
             <ol class="timeline">
               <li class="tl-item reveal">
-                <span class="tl-date" data-i18n="exp1.date">Feb 2025 – Jun 2025</span>
-                <h4 data-i18n="exp1.title">E-Commerce Business Developer (Intern)</h4>
-                <p class="tl-org" data-i18n="exp1.org">AWEX — Wallonia Export &amp; Investment Agency</p>
+                <span class="tl-date" data-i18n="x1.date">2021 – 2026</span>
+                <h4 data-i18n="x1.title">Front-of-house customer service (student jobs)</h4>
+                <p class="tl-org" data-i18n="x1.org">Hospitality — 4 establishments · Liège</p>
                 <ul class="tl-list">
-                  <li data-i18n="exp1.b1">Audited Walloon companies on their international e-commerce development</li>
-                  <li data-i18n="exp1.b2">Co-organised the <strong>EU Cross-Border E-Commerce Forum 2025</strong></li>
-                  <li data-i18n="exp1.b3">Digitalised a tool analysing companies' e-commerce maturity (CMM)</li>
-                  <li data-i18n="exp1.b4">Researched foreign markets</li>
-                  <li data-i18n="exp1.b5">Connected Walloon companies with e-commerce platforms</li>
+                  <li data-i18n="x1.b1">5 years of face-to-face customer contact in fast-paced environments</li>
+                  <li data-i18n="x1.b2">Order taking, advice and handling demanding customers</li>
+                  <li data-i18n="x1.b3">Resilience under pressure and consistency, alongside my studies</li>
                 </ul>
               </li>
               <li class="tl-item reveal">
-                <span class="tl-date" data-i18n="exp2.date">Oct 2022</span>
-                <h4 data-i18n="exp2.title">B2B Sales Representative — Consumer Goods</h4>
-                <p class="tl-org">Charlemagne Chocolatiers</p>
-                <p class="tl-intro" data-i18n="exp2.intro">Trade mission I was selected for during my first year of International Business.</p>
+                <span class="tl-date" data-i18n="x2.date">Feb 2025 – Jun 2025</span>
+                <h4 data-i18n="x2.title">E-Commerce Business Developer (Intern)</h4>
+                <p class="tl-org" data-i18n="x2.org">AWEX — Wallonia Export &amp; Investment Agency · Namur</p>
                 <ul class="tl-list">
-                  <li data-i18n="exp2.b1">Market studies on Wallonia and the United Kingdom</li>
-                  <li data-i18n="exp2.b2">Selected by a jury (HEPL professors / AWEX agents)</li>
-                  <li data-i18n="exp2.b3">Desk research and prospecting</li>
-                  <li data-i18n="exp2.b4">Pitch at the Birmingham Chamber of Commerce</li>
-                  <li data-i18n="exp2.b5"><strong>10,000+ units</strong> in sales generated in one week</li>
+                  <li data-i18n="x2.b1">Audited the digital maturity of around ten Walloon SMEs, in interviews with their managers (3 on site, the others by video call)</li>
+                  <li data-i18n="x2.b2">Identified weak points and recommended solutions</li>
+                  <li data-i18n="x2.b3">Connected companies with e-commerce platforms: presenting the solution and winning the client's buy-in</li>
+                  <li data-i18n="x2.b4">Co-organized the <strong>EU Cross-Border E-Commerce Forum 2025</strong></li>
+                  <li data-i18n="x2.b5">Digitalized an e-commerce maturity analysis tool (CMM)</li>
+                </ul>
+              </li>
+              <li class="tl-item reveal">
+                <span class="tl-date" data-i18n="x3.date">Oct 2022</span>
+                <h4 data-i18n="x3.title">Export sales mission (student project)</h4>
+                <p class="tl-org" data-i18n="x3.org">Charlemagne Chocolatiers / AWEX Explort · Birmingham (UK)</p>
+                <ul class="tl-list">
+                  <li data-i18n="x3.b1">Informal coordination of a team of students (no hierarchy, by taking the initiative)</li>
+                  <li data-i18n="x3.b2">Several weeks of remote prospecting (target research, cold calling, emailing), then 1 week of field prospecting in Birmingham</li>
+                  <li data-i18n="x3.b3">A single order of <strong>more than 10,000 units</strong> closed with The Grand Hotel Birmingham</li>
+                  <li data-i18n="x3.b4">Sales pitch to the Birmingham Chamber of Commerce</li>
+                  <li data-i18n="x3.b5">Selected by a jury of HEPL professors and AWEX agents</li>
                 </ul>
               </li>
             </ol>
@@ -523,26 +552,29 @@
             </h3>
             <ol class="timeline">
               <li class="tl-item reveal">
-                <span class="tl-date" data-i18n="edu1.date">Sep 2022 – Jan 2026</span>
-                <h4 data-i18n="edu1.title">Bachelor in E-Business</h4>
-                <p class="tl-org">Haute École de la Province de Liège (HEPL)</p>
-                <p class="tl-desc" data-i18n="edu1.desc">Professional bachelor — short-type higher education</p>
+                <span class="tl-date" data-i18n="e1.date">2022 – 2026</span>
+                <h4 data-i18n="e1.title">Bachelor in E-Business (graduated)</h4>
+                <p class="tl-org" data-i18n="e1.org">Haute École de la Province de Liège (HEPL)</p>
               </li>
               <li class="tl-item reveal">
-                <span class="tl-date" data-i18n="train1.date">Nov 2024</span>
-                <h4 data-i18n="train1.title">AI &amp; Emerging Technologies Seminar</h4>
-                <p class="tl-org">Technifutur</p>
-                <p class="tl-desc" data-i18n="train1.desc">3-day training on generative AI tools (ChatGPT, Gemini, Claude, Perplexity, Copilot, Midjourney, DALL·E, Kling, Runway, Creatify), AI behaviour and prompt design.</p>
+                <span class="tl-date" data-i18n="e2.date">2024</span>
+                <h4 data-i18n="e2.title">AI and emerging technologies training (3 days)</h4>
+                <p class="tl-org" data-i18n="e2.org">Technifutur</p>
               </li>
               <li class="tl-item reveal">
-                <span class="tl-date" data-i18n="cert1.date">Jun 2020</span>
-                <h4>Global Competence Certificate</h4>
-                <p class="tl-org">AFS Intercultural Programs</p>
+                <span class="tl-date" data-i18n="e3.date">2023 – 2024</span>
+                <h4 data-i18n="e3.title">Erasmus</h4>
+                <p class="tl-org" data-i18n="e3.org">Universidad de Málaga (Spain)</p>
               </li>
               <li class="tl-item reveal">
-                <span class="tl-date">2014 – 2020</span>
-                <h4 data-i18n="edu2.title">Secondary Education — General Track</h4>
-                <p class="tl-desc" data-i18n="edu2.desc">Upper secondary (3rd degree), general education</p>
+                <span class="tl-date" data-i18n="e4.date">2021</span>
+                <h4 data-i18n="e4.title">CESS (secondary school diploma)</h4>
+                <p class="tl-org" data-i18n="e4.org">Athénée Léonie de Waha, Liège</p>
+              </li>
+              <li class="tl-item reveal">
+                <span class="tl-date" data-i18n="e5.date">2019 – 2020</span>
+                <h4 data-i18n="e5.title">AFS exchange</h4>
+                <p class="tl-org" data-i18n="e5.org">Kohler High School (USA)</p>
               </li>
             </ol>
           </div>
@@ -629,13 +661,13 @@
             <ul class="story-facts">
               <li><strong data-i18n="story.f1.v">1 week</strong><span data-i18n="story.f1.l">on the ground in Birmingham</span></li>
               <li><strong data-i18n="story.f2.v">2 shops</strong><span data-i18n="story.f2.l">independent organic stores</span></li>
-              <li><strong data-i18n="story.f3.v">10,000</strong><span data-i18n="story.f3.l">branded chocolates — potential first order</span></li>
+              <li><strong data-i18n="story.f3.v">10,000</strong><span data-i18n="story.f3.l">branded chocolates ordered by The Grand Hotel</span></li>
             </ul>
 
             <p data-i18n="story.p1">Through a collaboration between <strong>AWEX and HEPL</strong>, I had the opportunity to take part in a real economic mission designed to help Walloon companies explore and develop opportunities in foreign markets, while giving students hands-on experience in international business and export.</p>
             <p data-i18n="story.p2">Participation was selective. To qualify, I first conducted a <strong>market analysis of Wallonia and the UK</strong>, focusing on either the agri-food or pharmaceutical sector. I then developed a complete export strategy based on a simulated Walloon company entering the UK market. The project was presented to a panel of <strong>AWEX representatives and HEPL professors</strong>, who selected the students they felt were best prepared to represent a Walloon company abroad.</p>
-            <p data-i18n="story.p3">After being selected, I was responsible for finding a company to represent and chose <strong>Charlemagne Chocolatiers</strong>. I developed a prospecting strategy combining desk research, cold calling and cold emailing to identify potential British customers and secure meetings ahead of the mission.</p>
-            <p data-i18n="story.p4">During my week in <strong>Birmingham</strong>, I met with potential clients, visited businesses I had identified as relevant prospects and presented Charlemagne Chocolatiers at the <strong>Birmingham Chamber of Commerce</strong>. The mission resulted in sales to two independent organic shops and, more importantly, a potential agreement with <strong>The Grand Hotel Birmingham</strong> for an initial order of <strong>10,000 branded chocolates</strong>. The agreement also included the possibility of recurring monthly orders of a further 10,000 units if the initial launch was successful.</p>
+            <p data-i18n="story.p3">After being selected, I had to find a company to represent: together with my team, we reached an agreement with <strong>Charlemagne Chocolatiers</strong>. With my team's help, I then developed a prospecting strategy combining desk research, cold calling and cold emailing to identify potential British customers and secure meetings ahead of the mission.</p>
+            <p data-i18n="story.p4">During my week in <strong>Birmingham</strong>, I met with potential clients, visited businesses I had identified as relevant prospects and presented Charlemagne Chocolatiers at the <strong>Birmingham Chamber of Commerce</strong>. The mission resulted in sales to two independent organic shops and, more importantly, an order of <strong>10,000 branded chocolates</strong> negotiated with <strong>The Grand Hotel Birmingham</strong>, with the contract then finalized by Charlemagne Chocolatiers' sales manager. The agreement also included the possibility of recurring monthly orders of a further 10,000 units if the initial launch was successful.</p>
             <p data-i18n="story.p5">The experience gave me first-hand exposure to <strong>international prospecting, B2B sales, client meetings, commercial pitching and export business development</strong>, from market research all the way through to negotiating real commercial opportunities.</p>
           </div>
         </div>
@@ -647,7 +679,8 @@
     <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
   </a>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
+  <!-- The ?v= number makes browsers fetch the new files after an update; change it whenever css/ or js/ changes. -->
+  <script src="js/i18n.js?v=20261004c"></script>
+  <script src="js/main.js?v=20261004c"></script>
 </body>
 </html>
